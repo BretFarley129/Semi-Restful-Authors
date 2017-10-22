@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'SemiRest/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1> User # {{stuff.id}}</h1>
+        </div>
+        <div id="body">
+            
+            <p>Full Name: {{stuff.first}} {{stuff.last}}</p>
+            <p>Email:{{stuff.email}}</p>
+            <p>Created at:{{stuff.created_at}}</p>
+            
+
+            <a href="/{{stuff.id}}/edit">Edit</a> | 
+            <a href="/{{stuff.id}}/delete">Delete</a> 
+        </div>
+    </div>
+</body>
+</html>

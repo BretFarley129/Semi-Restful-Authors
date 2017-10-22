@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'SemiRest/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Add a new user</h1>
+        </div>
+        <div id="body">
+            <form action="/addUser" method='post'>
+                {% csrf_token %}
+                First name:<br>
+                <input type="text" name="first" id="first">
+                <br><br>
+                Last name:<br>
+                <input type="text" name="last" id="last">
+                <br><br>
+                Email:<br>
+                <input type="text" name="email" id="email">
+                <br><br>
+                <input type="submit" value="Create" >
+            </form> 
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li style="color:red" {%if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

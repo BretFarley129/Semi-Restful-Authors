@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'SemiRest/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Users</h1>
+        </div>
+        <div id="body">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+                {%for i in stuff%}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.first}} {{i.last}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.created_at}}</td>
+                    <td>
+                        <a href="/{{i.id}}">Show</a>
+                        <a href="/{{i.id}}/edit">Edit</a>
+                        <a href="/{{i.id}}/delete">Delete</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+            <a href="/new"> Add a new user</a>
+        </div>
+    </div>
+</body>
+</html>

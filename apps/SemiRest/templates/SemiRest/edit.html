@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'SemiRest/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Edit YouR GoGDamN uSeR # {{stuff.id}}</h1>
+        </div>
+        <div id="body">
+            <form action="/{{stuff.id}}/update" method = post>
+                {% csrf_token %}
+                First name:<br>
+                <input type="text" name="first" value='{{stuff.first}}'>
+                <br><br>
+                Last name:<br>
+                <input type="text" name="last" value='{{stuff.last}}'>
+                <br><br>
+                Email:<br>
+                <input type="text" name="email" value='{{stuff.email}}'>
+                <br><br>
+                <input type="submit" value="Edit" >
+            </form> 
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li style="color:red" {%if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
